@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'viewdemoapp'
+    'viewdemoapp',
+    'testdb.apps.TestdbConfig'
 ]
 
 MIDDLEWARE = [
@@ -75,10 +76,14 @@ WSGI_APPLICATION = 'DairyManagement.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': BASE_DIR / 'db.sqlite3',
-    #}
+    'default' :{
+        'ENGINE' : 'django.db.backends.mysql',
+        'NAME' : 'dairymanagement' , # Name of the database*
+        'USER': 'root', #user name for the database
+        'PASSWORD' : '', # password
+        'HOST' : 'localhost', # IP address of the database
+        'PORT' : '3306', # port number of database server
+    }
 }
 
 
