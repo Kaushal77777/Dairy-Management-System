@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'viewdemoapp',
-    'testdb.apps.TestdbConfig'
+    'testdb.apps.TestdbConfig',
+    'login'
 ]
 
 MIDDLEWARE = [
