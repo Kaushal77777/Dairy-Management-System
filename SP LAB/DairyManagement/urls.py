@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello_world/', include('hello_world.urls')),
     path('viewdemoapp/', include('viewdemoapp.urls')),
+    path('firstdbtest/', include('firstdbtest.urls')),
     path('login/', include('login.urls'))
 ]
