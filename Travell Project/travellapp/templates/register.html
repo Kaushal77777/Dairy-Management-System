@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Registeration</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body style="background-color:powderblue;" align="center">
+    <form action="register" method="post" align="center">
+        {% csrf_token %}
+        <h1 style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">Register</h1>
+        <br>
+        <lable style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">First Name: </lable>&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="text" name="first_name" placeholder="First Name" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;"><br><br>
+        <lable style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">Last Name: </lable>&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="text" name="last_name" placeholder="Last Name" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;"><br><br>
+        <lable style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">Username: </lable>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+        <input type="text" name="username" placeholder="Username" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;"><br><br>
+        <lable style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">Email: </lable>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="email" name="email" placeholder="email" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;"><br><br>
+        <lable style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">Password: </lable>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="password" name="password1" placeholder="Password" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;"><br><br>
+        <lable style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">Confirm Password: </lable>
+        <input type="password" name="password2" placeholder="Confirm Password" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;"><br><br>
+        <br>
+        <input type="Submit" value="Register" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;"><br><br>
+
+    </form>
+
+    <div align="center" style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">
+        {% for message in messages %}
+        <h3> {{message}}  </h3>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
