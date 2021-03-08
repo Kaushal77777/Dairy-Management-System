@@ -3,12 +3,6 @@
 <head>
 	<title>Payment Page</title>
 </head>
-<script> 
-	function numberOnly(id){
-		var element = document.getElementById(id);
-		element.value = element.value.replace(/[^0-9]/gi, "");
-	}
-</script>
 <body style="font-size:150%;background-color:powderblue;color:#0033cc;font-family:verdana;">
 
 	{% if user.is_authenticated %}
@@ -18,7 +12,7 @@
      	<form action="paymentsuccessful" method="post" align="center" >
 		 {% csrf_token %}
      		Card Number<br>
-     		<input type="text" name="card_num" style="font-size:90%;" minlength="12" id="card_num" placeholder="12 digit number" oninput="numberOnly(this.id);" required><br><br>
+     		<input type="Number" name="card_num" style="font-size:90%;" min="100000000000" max="999999999999" placeholder="12 digit number" required><br><br>
      		Expiry Date<br>
      		<select name="month" style="font-size:90%;" required>
      			<option value="">Month</option>
@@ -50,7 +44,7 @@
      		</select>
      		<br><br>
      		CVV<br>
-     		<input type="text" name="cvv"  style="font-size:90%;" id="cvv" maxlength="3" minlength="3" placeholder="***" oninput="numberOnly(this.id);" required> <br><br>
+     		<input type="Number" name="cvv"  style="font-size:90%;" max="999" min="100" placeholder="***" required> <br><br>
      		<input type="submit" style="font-size:90%;background-color:powderblue;color:#0033cc;font-family:verdana;" value="Make Payment"> 
      		<input type="button" style="font-size:90%;background-color:powderblue;color:#0033cc;font-family:verdana;" onclick="location.href='/' "value="Cancel">
      	</form>
