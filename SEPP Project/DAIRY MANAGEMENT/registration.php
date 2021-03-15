@@ -1,3 +1,12 @@
+<?php 
+    require_once("connection.php") ;
+    if(isset($_SESSION["is_login"]) && $_SESSION['is_login'] == true ) 
+    { 
+        header("Location: index.php"); 
+    }
+    
+?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -84,3 +93,9 @@
         </footer>
 	</body>
 </html>
+
+<?php
+
+    
+    
+?>
