@@ -6,6 +6,12 @@
     }
     
 ?>
+<?php
+    if(isset($_REQUEST['message']))
+    {
+        echo $_REQUEST["message"];
+    }
+?>
 
 <html>
     <head>
@@ -66,21 +72,36 @@
                         $role=$_POST["role"];
                         $rate=$_POST["rate"];
                         $stmt = $dbhandler->prepare("
-                            INSERT INTO table_user (name, username, password, email, mobile, address, role, rate) 
-                            VALUES (:name, :username, :password, :email, :mobile, :address, :role, :rate)
+                                                    SELECT * FROM table_user 
+                                                    WHERE username=:username 
+                                                    LIMIT 1
                         ");
-                        $stmt->bindParam(':name', $name);
                         $stmt->bindParam(':username', $username);
-                        $stmt->bindParam(':password', $password);
-                        $stmt->bindParam(':email', $email);
-                        $stmt->bindParam(':mobile', $mobile);
-                        $stmt->bindParam(':address', $address);
-                        $stmt->bindParam(':role', $role);
-                        $stmt->bindParam(':rate', $rate);
                         $stmt->execute();
-                        echo "<br><br>";
-                        echo "You are registered Now you can login ";
-                        echo "<a href='login.php'>Login</a>";                
+                        $row = $stmt->fetch();
+                        if($row)
+                        {
+                            header("Location: registration.php?message=Username Already Taken Please Resubmit Form");
+                        }
+                        else{
+                            $stmt = $dbhandler->prepare("
+                                INSERT INTO table_user (name, username, password, email, mobile, address, role, rate) 
+                                VALUES (:name, :username, :password, :email, :mobile, :address, :role, :rate)
+                            ");
+                            $stmt->bindParam(':name', $name);
+                            $stmt->bindParam(':username', $username);
+                            $stmt->bindParam(':password', $password);
+                            $stmt->bindParam(':email', $email);
+                            $stmt->bindParam(':mobile', $mobile);
+                            $stmt->bindParam(':address', $address);
+                            $stmt->bindParam(':role', $role);
+                            $stmt->bindParam(':rate', $rate);
+                            $stmt->execute();
+                            echo "<br><br>";
+                            //echo "You are registered Now you can login ";
+                            header("Location: registration.php?message=You are registered Now you can login ");
+                            echo "<a href='login.php'>Login</a>";
+                        }                
                     }
                 }
                 catch(PDOException $e)
