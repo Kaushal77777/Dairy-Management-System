@@ -1,1 +1,0 @@
-# Dairy-Management-System
